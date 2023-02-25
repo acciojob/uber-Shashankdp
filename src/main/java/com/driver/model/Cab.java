@@ -3,30 +3,21 @@ package com.driver.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Cabs")
-public class Cab{
+public class Cab {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int perKmRate;
-    private boolean available;
+    private  boolean available;
 
+    // Cab is child wrt Driver
+    // UNIDIRECTIONAL MAPPING
     @OneToOne
     @JoinColumn
     private Driver driver;
 
     public Cab() {
-    }
-
-    public Cab(int id, int perKmRate, boolean available, Driver driver) {
-        this.id = id;
-        this.perKmRate = perKmRate;
-        this.available = available;
-        this.driver = driver;
-    }
-
-    public Cab(int id) {
-        this.id = id;
     }
 
     public int getId() {
